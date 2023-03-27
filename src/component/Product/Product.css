@@ -1,0 +1,16 @@
+.card{
+    border: 1px solid #95A0A7;
+    border-radius: 8px !important;
+}
+
+.cardBuyButton{
+    color: #0E161A;
+    background: #FFE0B3;
+    border-top: 1px solid #95A0A7;
+    border-radius: 0px 0px 8px 8px;
+    height: 48px;
+}
+
+.cardBuyButton:hover{
+    background-color: orange;
+}

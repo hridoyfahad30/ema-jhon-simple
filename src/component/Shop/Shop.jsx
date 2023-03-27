@@ -14,7 +14,7 @@ const Shop = () => {
 
     useEffect(()=> {
 
-        fetch('../../../public/products.json')
+        fetch('https://raw.githubusercontent.com/ProgrammingHero1/ema-john-resources/main/fakeData/products.json')
         .then(res => res.json())
         .then(data => setProducts(data))
 
@@ -35,7 +35,7 @@ const Shop = () => {
         <div className='shopContainer container mx-auto'>
             <div id='shopCardContainer' className='break-words mt-28 mx-4'>
                 
-                <div className=' grid grid-cols-3 gap-5'>
+                <div className=' grid grid-cols-1 xl:grid-cols-3 gap-5'>
                     {
                         products.map(product => <Product key={product.id} product={product} addToCart={addToCart}></Product>)
                     }

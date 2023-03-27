@@ -6,3 +6,13 @@
 #orderSummery{
     background-color: #FF99004D;
 }
+
+@media screen and (max-width: 600px) {
+    .shopContainer{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    #orderSummery{
+        margin-top: 50px;
+    }
+  }

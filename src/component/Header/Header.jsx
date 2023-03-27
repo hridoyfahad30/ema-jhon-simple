@@ -4,7 +4,7 @@ import './Header.css'
 
 const Header = () => {
     return (
-        <nav className='header container mx-auto h-20 text-white px-28 flex justify-between items-center'>
+        <nav className='header container mx-auto xl:h-20 text-white py-4 px-28 xl:flex justify-between items-center'>
             
                 <a href=""><img src={logo} alt="" /></a>
             

@@ -47,7 +47,7 @@ const Shop = () => {
                 <h3 className=' text-lg font-medium mb-6'>Selected Items: {cart.length}</h3>
                 <h3 className=' text-lg font-medium mb-6'>Total Price: $ {price}</h3>
                 <h3 className=' text-lg font-medium mb-6'>Total Shipping Charge: $ {shipping}</h3>
-                <h3 className=' text-lg font-medium mb-6'>Tax: $ {tax}</h3>
+                <h3 className=' text-lg font-medium mb-6'>Tax: $</h3>
                 
             </div>
         </div>

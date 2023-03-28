@@ -2,19 +2,31 @@ import React from 'react';
 import './Cart.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashCan, faArrowRight } from '@fortawesome/free-solid-svg-icons'
+import { removeFromDb } from '../../utilities/fakedb';
 
 
-const Cart = (props) => {
+const Cart = ({cart}) => {
 
-    const {cart, price, shipping, tax, grandTotal} = props;
+    let totalPrice = 0;
+    let totalShipping = 0;
+    let tax = 0;
+    let grandTotal = 0
+
+    for (const product of cart) {
+        totalPrice = totalPrice + product.price;
+        totalShipping = totalShipping + product.shipping;
+        tax = totalPrice * 0.1;
+        grandTotal = totalPrice + totalShipping + tax;
+    }
+
     return (
         <div id='orderSummery' className='break-words px-6 py-12 pt-7 rounded-lg sticky top-6'>
 
             <h1 className=' text-2xl text-center font-medium mb-12'>Order Summery</h1>
             <h3 className=' text-lg font-medium mb-4'>Selected Items: {cart.length}</h3>
-            <h3 className=' text-lg font-medium mb-4'>Total Price: $ {price}</h3>
-            <h3 className=' text-lg font-medium mb-4'>Total Shipping Charge: $ {shipping}</h3>
-            <h3 className=' text-lg font-medium mb-4'>Tax: $ {parseFloat(tax).toFixed(2)}</h3>
+            <h3 className=' text-lg font-medium mb-4'>Total Price: $ {totalPrice}</h3>
+            <h3 className=' text-lg font-medium mb-4'>Total Shipping Charge: $ {totalShipping}</h3>
+            <h3 className=' text-lg font-medium mb-4'>Tax: $ {tax.toFixed(2)}</h3>
             <h3 className=' text-xl font-medium mb-4 mt-12'>Grand Total: $ {parseFloat(grandTotal).toFixed(2)}</h3>
                 
             <div className='flex flex-col justify-center items-center'>

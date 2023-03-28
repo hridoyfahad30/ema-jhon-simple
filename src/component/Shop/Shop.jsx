@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { addToDb, getShoppingCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
@@ -7,12 +8,6 @@ const Shop = () => {
 
     const [products, setProducts] = useState([])
     const [cart, setCart] = useState([])
-    const [totalPrice, setTotalPrice] = useState(0)
-    const [shipping, setShipping] = useState(0)
-    const tax = totalPrice * 0.1;
-    const grandTotal = totalPrice + shipping + tax;
-    
-    
 
     useEffect(()=> {
 
@@ -26,10 +21,32 @@ const Shop = () => {
         let newCart = [...cart, product]
         setCart(newCart)
         
-        setTotalPrice(product.price + totalPrice)
-        setShipping(product.shipping + shipping)
+
+        addToDb(product.id)
     }
     
+     useEffect(() => {
+
+        const storedCart = getShoppingCart();
+        const savedCart = [];
+
+        for (const id in storedCart) {
+
+            const addedProduct = products.find(product => product.id === id);
+
+            if(addedProduct){
+
+                const quantity = storedCart[id]
+                addedProduct.quantity = quantity;
+
+                savedCart.push(addedProduct);
+            }
+            
+        }
+        
+        setCart(savedCart);
+
+     }, [products])
     
 
     return (
@@ -44,7 +61,7 @@ const Shop = () => {
 
             </div>
             <div id='cartContainer'>
-                <Cart cart={cart} price={totalPrice} shipping={shipping} tax={tax} grandTotal={grandTotal}></Cart>
+                <Cart cart={cart} ></Cart>
             </div>
         </div>
     );

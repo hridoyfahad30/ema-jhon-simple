@@ -1,0 +1,44 @@
+#orderSummery{
+    background-color: #FF99004D;
+}
+
+#clearCart{
+    width: 232px;
+    height: 48px;
+    background: #FF3030;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    color: #fff;
+    margin-top: 50px;
+    margin-bottom: 16px;
+}
+
+#clearCart:hover{
+    background-color: #e20404;
+}
+#orderReview{
+    width: 232px;
+    height: 48px;
+    background: #FF9900;
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    color: #fff;
+}
+
+#orderReview:hover{
+    background-color: #e78b00;
+}
+
+@media screen and (max-width: 600px) {
+    .shopContainer{
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+    #orderSummery{
+        margin-top: 50px;
+    }
+  }

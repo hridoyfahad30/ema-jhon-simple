@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
 
@@ -6,9 +7,10 @@ const Shop = () => {
 
     const [products, setProducts] = useState([])
     const [cart, setCart] = useState([])
-    const [price, setPrice] = useState(0)
+    const [totalPrice, setTotalPrice] = useState(0)
     const [shipping, setShipping] = useState(0)
-    const [tax, setTax] = useState(0)
+    const tax = totalPrice * 0.1;
+    const grandTotal = totalPrice + shipping + tax;
     
     
 
@@ -24,9 +26,8 @@ const Shop = () => {
         let newCart = [...cart, product]
         setCart(newCart)
         
-        setPrice(product.price + price)
+        setTotalPrice(product.price + totalPrice)
         setShipping(product.shipping + shipping)
-        setTax(price * 0.1)
     }
     
     
@@ -42,13 +43,8 @@ const Shop = () => {
                 </div>
 
             </div>
-            <div id='orderSummery' className='break-words px-6 pt-7'>
-                <h1 className=' text-2xl text-center font-medium mb-12'>Order Summery</h1>
-                <h3 className=' text-lg font-medium mb-6'>Selected Items: {cart.length}</h3>
-                <h3 className=' text-lg font-medium mb-6'>Total Price: $ {price}</h3>
-                <h3 className=' text-lg font-medium mb-6'>Total Shipping Charge: $ {shipping}</h3>
-                <h3 className=' text-lg font-medium mb-6'>Tax: $</h3>
-                
+            <div id='cartContainer'>
+                <Cart cart={cart} price={totalPrice} shipping={shipping} tax={tax} grandTotal={grandTotal}></Cart>
             </div>
         </div>
     );

@@ -3,16 +3,6 @@
     grid-template-columns: 4fr 1fr;
 }
 
-#orderSummery{
-    background-color: #FF99004D;
+#cartContainer{
+    width: 300px;
 }
-
-@media screen and (max-width: 600px) {
-    .shopContainer{
-        display: grid;
-        grid-template-columns: 1fr;
-    }
-    #orderSummery{
-        margin-top: 50px;
-    }
-  }

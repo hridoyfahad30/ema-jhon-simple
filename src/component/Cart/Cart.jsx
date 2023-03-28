@@ -7,23 +7,29 @@ import { removeFromDb } from '../../utilities/fakedb';
 
 const Cart = ({cart}) => {
 
+
     let totalPrice = 0;
     let totalShipping = 0;
     let tax = 0;
-    let grandTotal = 0
+    let grandTotal = 0;
+    let quantity = 0;
 
     for (const product of cart) {
-        totalPrice = totalPrice + product.price;
+
+        product.quantity = product.quantity || 1;
+
+        totalPrice = totalPrice + product.price * product.quantity;
         totalShipping = totalShipping + product.shipping;
         tax = totalPrice * 0.1;
         grandTotal = totalPrice + totalShipping + tax;
+        quantity = quantity + product.quantity;
     }
 
     return (
         <div id='orderSummery' className='break-words px-6 py-12 pt-7 rounded-lg sticky top-6'>
 
             <h1 className=' text-2xl text-center font-medium mb-12'>Order Summery</h1>
-            <h3 className=' text-lg font-medium mb-4'>Selected Items: {cart.length}</h3>
+            <h3 className=' text-lg font-medium mb-4'>Selected Items: {quantity}</h3>
             <h3 className=' text-lg font-medium mb-4'>Total Price: $ {totalPrice}</h3>
             <h3 className=' text-lg font-medium mb-4'>Total Shipping Charge: $ {totalShipping}</h3>
             <h3 className=' text-lg font-medium mb-4'>Tax: $ {tax.toFixed(2)}</h3>

@@ -6,3 +6,12 @@
 #cartContainer{
     width: 300px;
 }
+
+@media screen and (max-width: 600px) {
+    .shopContainer{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+  }

@@ -43,7 +43,7 @@ const Shop = () => {
             }
             
         }
-        
+
         setCart(savedCart);
 
      }, [products])

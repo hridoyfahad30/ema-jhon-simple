@@ -25,11 +25,13 @@ const Cart = ({cart}) => {
         quantity = quantity + product.quantity;
     }
 
+    
+
     return (
-        <div id='orderSummery' className='break-words px-6 py-12 pt-7 rounded-lg sticky top-6'>
+        <div id='orderSummery' className='break-words px-6 py-12 pt-7 rounded-lg sticky top-24'>
 
             <h1 className=' text-2xl text-center font-medium mb-12'>Order Summery</h1>
-            <h3 className=' text-lg font-medium mb-4'>Selected Items: {quantity}</h3>
+            <h3 className=' text-lg font-medium mb-4'>Total Quantity: {quantity}</h3>
             <h3 className=' text-lg font-medium mb-4'>Total Price: $ {totalPrice}</h3>
             <h3 className=' text-lg font-medium mb-4'>Total Shipping Charge: $ {totalShipping}</h3>
             <h3 className=' text-lg font-medium mb-4'>Tax: $ {tax.toFixed(2)}</h3>
